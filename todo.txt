@@ -1,0 +1,28 @@
+- git & github
+
+-collioson x, y  half ball detection 
+-paddle acceleration & deceleration
+- paddle movement insults ball speed 
+
+
+- 60 fps, gameloop, yt
+
+- different backgrounds,  refactor levels.js
+- hud
+	lives
+	coins
+
+-main menu
+-pause menu
+-saving 
+-shop 
+-general rouge-lite mechanics
+
+
+-animations
+-sounds
+-level building animation
+-floating levels 
+
+-chapter mechanics 
+-boss fightes
