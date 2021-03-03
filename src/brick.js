@@ -1,5 +1,3 @@
-import { detectCollision } from './collisionDetection.js'
-
 
 export default class Brick {
 
@@ -9,7 +7,7 @@ export default class Brick {
 
 		this.game = game
 
-		this.position =position
+		this.position = position
 
 		this.width = 80
 		this.height = 40
@@ -18,11 +16,14 @@ export default class Brick {
 	}
 
 	update(deltaTime) {
-		if(detectCollision(this.game.ball, this)) {
+		if(this.game.collisions.ballY(this.game.ball, this)) {
 			this.game.ball.speed.y = -this.game.ball.speed.y
 			this.markedForDeletion = true
+		}
 
-			
+		if(this.game.collisions.ballX(this.game.ball, this)) {
+			this.game.ball.speed.x = -this.game.ball.speed.x
+			this.markedForDeletion = true
 		}
 	}
 

@@ -3,6 +3,7 @@ import InputHandler from './input.js'
 import Ball from './ball.js'
 import Brick from './brick.js'
 import {buildLevel, level1,level2} from './levels.js'
+import Collisions from './collisionDetection.js'
 
 const GAMESTATE = {
 	PAUSED: 0,
@@ -23,6 +24,7 @@ export default class Game {
 		this.gamestate = GAMESTATE.MENU
 		this.ball = new Ball(this)
 		this.paddle = new Paddle(this)
+		this.collisions = new Collisions(this)
 		new InputHandler(this.paddle, this)
 
 		this.lives = 3

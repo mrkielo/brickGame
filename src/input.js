@@ -14,6 +14,7 @@ export default class InputHandler {
 				break;
 
 				case 27:
+					if(game.gamestate!=3) //GAMESTATE.GAMEOVER = 3
 					game.togglePause()
 				break;
 			}

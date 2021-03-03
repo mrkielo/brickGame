@@ -20,7 +20,7 @@ export default class Paddle {
 		this.speed = -this.maxSpeed
 	}
 
-	moveRight() {
+	moveRight() {  
 		this.speed = this.maxSpeed
 	}
 
