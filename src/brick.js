@@ -15,13 +15,14 @@ export default class Brick {
 		this.markedForDeletion = false
 	}
 
-	update(deltaTime) {
+	update() {
 		if(this.game.collisions.ballY(this.game.ball, this)) {
 			this.game.ball.speed.y = -this.game.ball.speed.y
 			this.markedForDeletion = true
 		}
 
 		if(this.game.collisions.ballX(this.game.ball, this)) {
+			console.log("if")
 			this.game.ball.speed.x = -this.game.ball.speed.x
 			this.markedForDeletion = true
 		}

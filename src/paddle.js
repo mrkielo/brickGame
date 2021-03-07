@@ -29,7 +29,7 @@ export default class Paddle {
 		ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
 	}
 
-	update(deltaTime) {
+	update() {
 
 
 		this.position.x += this.speed 

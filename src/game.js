@@ -47,7 +47,7 @@ export default class Game {
 		this.gamestate = GAMESTATE.RUNNING
 	}
 
-	update(deltaTime) {
+	update() {
 
 		if(
 			this.gamestate == GAMESTATE.PAUSED ||
@@ -60,8 +60,8 @@ export default class Game {
 		if(this.lives == 0)  this.gamestate = GAMESTATE.GAMEOVER
 
 
-		this.gameObjects.forEach((object) => object.update(deltaTime))
-		this.bricks.forEach((brick) => brick.update(deltaTime))
+		this.gameObjects.forEach((object) => object.update())
+		this.bricks.forEach((brick) => brick.update())
 		this.bricks = this.bricks.filter(brick => !brick .markedForDeletion)
 
 		if(this.bricks.length === 0) {

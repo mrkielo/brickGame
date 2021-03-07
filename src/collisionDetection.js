@@ -5,6 +5,7 @@ export default class Collisions {
 	}
 
 	ballX(ball,object) {
+
 		let ballSides = {
 			left: ball.position.x,
 			right: ball.position.x + ball.size,
@@ -27,7 +28,7 @@ export default class Collisions {
 		if
 			(
 				ballCenter.y > objectSides.top && 
-				ballCenter.y < objectSides.botttom && 
+				ballCenter.y < objectSides.bottom && 
 				ballSides.left <= objectSides.right &&
 				ballSides.right >= objectSides.left  
 			)
