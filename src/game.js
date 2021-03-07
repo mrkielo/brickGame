@@ -4,6 +4,7 @@ import Ball from './ball.js'
 import Brick from './brick.js'
 import {buildLevel, level1,level2} from './levels.js'
 import Collisions from './collisionDetection.js'
+import Hud from './hud.js'
 
 const GAMESTATE = {
 	PAUSED: 0,
@@ -16,16 +17,17 @@ const GAMESTATE = {
 
 export default class Game {
 
-	constructor(gameWidth, gameHeight) {
+	constructor(gameWidth, gameHeight, canvas) {
 
 		this.gameHeight = gameHeight
 		this.gameWidth = gameWidth
-
+		this.canvas = canvas
 		this.gamestate = GAMESTATE.MENU
+		this.hud = new Hud(this)
 		this.ball = new Ball(this)
 		this.paddle = new Paddle(this)
 		this.collisions = new Collisions(this)
-		new InputHandler(this.paddle, this)
+		this.input = new InputHandler(this, canvas)
 
 		this.lives = 3
 		this.bricks = []
@@ -69,6 +71,7 @@ export default class Game {
 			this.gamestate = GAMESTATE.NEWLEVEL
 			this.start()
 		}
+
 	}
 
 	draw(ctx) {
@@ -78,13 +81,7 @@ export default class Game {
 		
 		//drawing pause menu
 		if(this.gamestate == GAMESTATE.PAUSED) {
-			ctx.rect(0,0,this.gameWidth,this.gameHeight)
-			ctx.fillStyle = "rgba(0,0,0,0.7)"
-			ctx.fill()
-			ctx.font = " 30px Arial"
-			ctx.fillStyle = "white"
-			ctx.textAlign = "center"
-			ctx.fillText("Paused", this.gameWidth/2, this.gameHeight/2)
+			this.hud.drawPause(ctx)
 		}
 
 		//drawing menu
@@ -108,8 +105,10 @@ export default class Game {
 			ctx.fillText("GAMEOVER", this.gameWidth/2, this.gameHeight/2)
 		}
 		
+		//if(this.input.clickPosition!= undefined)
+		this.input.mousePosition(event)
+			console.log(this.input.clickPosition);
 		
-
 	}
 
 	togglePause() {

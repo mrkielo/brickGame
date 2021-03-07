@@ -2,15 +2,18 @@ import Game from "./game.js";
 
 export default class InputHandler {
 
-	constructor(paddle, game) {
+	constructor(game) {
+
+		this.game = game
+
 		document.addEventListener('keydown', event => {
 			switch(event.keyCode) {
 				case 37:
-					paddle.moveLeft()
+					game.paddle.moveLeft()
 				break;
 	
 				case 39:
-					paddle.moveRight()
+					game.paddle.moveRight()
 				break;
 
 				case 27:
@@ -23,11 +26,11 @@ export default class InputHandler {
 		document.addEventListener('keyup', event => {
 			switch(event.keyCode) {
 				case 37:
-					if(paddle.speed < 0)	paddle.stop()
+					if(game.paddle.speed < 0)	game.paddle.stop()
 				break
 	
 				case 39:
-					if(paddle.speed>0)	paddle.stop()
+					if(game.paddle.speed>0)	game.paddle.stop()
 				break
 
 				case 32:
@@ -36,8 +39,25 @@ export default class InputHandler {
 			}
 		})
 
+		game.canvas.addEventListener('onclick', event =>{
+			
+		})
+
+		// game.canvas.addEventListener('onmouseup', event => {
+		// 	this.clickPosition = undefined
+		// })
+
+		
 
 
+
+	}
+	mousePosition(event) {
+		let rect = this.game.canvas.getBoundingClientRect()
+		this.clickPosition = {
+		x: event.clientX - rect.left,
+		y: event.clientY - rect.top	
+		}	
 	}
 
 }

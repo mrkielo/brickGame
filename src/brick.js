@@ -22,7 +22,6 @@ export default class Brick {
 		}
 
 		if(this.game.collisions.ballX(this.game.ball, this)) {
-			console.log("if")
 			this.game.ball.speed.x = -this.game.ball.speed.x
 			this.markedForDeletion = true
 		}
